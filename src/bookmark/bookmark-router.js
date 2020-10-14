@@ -20,26 +20,26 @@ bookmarkRouter
           logger.error(`Title is required`);
           return res
             .status(400)
-            .send('Invalid data');
+            .send('Title is required');
         }
         
         if (!url) {
           logger.error(`URL is required`);
           return res
             .status(400)
-            .send('Invalid data');
+            .send('URL is required');
         }
         if (!rating) {
           logger.error(`Rating is required`);
           return res
             .status(400)
-            .send('Invalid data');
+            .send('Rating is required');
         }
         if (!desc) {
           logger.error(`Description is required`);
           return res
             .status(400)
-            .send('Invalid data');
+            .send('Description is required');
         }
         const id = uuid();
       
@@ -86,7 +86,7 @@ bookmarkRouter
       logger.error(`Bookmark with id ${id} not found.`);
       return res
         .status(404)
-        .send('Not found');
+        .send('Bookmark with id ${id} not found.');
     }
   
     store.bookmarks.splice(bookmarkIndex, 1);
@@ -95,6 +95,7 @@ bookmarkRouter
   
     res
       .status(204)
+      .send(`Bookmark with id ${id} deleted.`)
       .end();
   })
 
