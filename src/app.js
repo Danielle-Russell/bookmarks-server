@@ -11,6 +11,8 @@ const app = express()
 
 app.use(bookmarkRouter)
 
+app.use(validateBearerToken)
+
 const morganOption = (NODE_ENV === 'production')
   ? 'tiny'
   : 'common';

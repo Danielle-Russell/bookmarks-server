@@ -1,7 +1,7 @@
 const { API_TOKEN } = require('./config')
 const logger = require('./logger')
 
-app.use(function validateBearerToken(req, res, next) {
+function validateBearerToken(req, res, next) {
     const apiToken = process.env.API_TOKEN
     const authToken = req.get('Authorization')
   
@@ -10,6 +10,7 @@ app.use(function validateBearerToken(req, res, next) {
       return res.status(401).json({ error: 'Unauthorized request' })
     }
     next()
-  })
+  }
+
 
   module.exports = validateBearerToken

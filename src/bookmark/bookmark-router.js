@@ -15,7 +15,7 @@ bookmarkRouter
   })
   .post(bodyParser, (req, res) => {
       
-        const { title, url, rating, desc } = req.body;
+        const { title, url, description, rating } = req.body;
         if (!title) {
           logger.error(`Title is required`);
           return res
@@ -35,7 +35,7 @@ bookmarkRouter
             .status(400)
             .send('Rating is required');
         }
-        if (!desc) {
+        if (!description) {
           logger.error(`Description is required`);
           return res
             .status(400)
@@ -47,8 +47,8 @@ bookmarkRouter
           id,
           title,
           url,
-          rating,
-          desc
+          description,
+          rating
         };
         
         store.bookmarks.push(bookmark);
