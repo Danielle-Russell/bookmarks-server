@@ -9,9 +9,9 @@ const validateBearerToken = require('./validateBearerToken');
 
 const app = express()
 
-app.use(bookmarkRouter)
-
 app.use(validateBearerToken)
+
+app.use(bookmarkRouter)
 
 const morganOption = (NODE_ENV === 'production')
   ? 'tiny'
