@@ -6,6 +6,7 @@ const helmet = require('helmet')
 const bookmarkRouter = require('./bookmark/bookmark-router');
 const { NODE_ENV } = require('./config')
 const validateBearerToken = require('./validateBearerToken');
+const BookmarksService = require ('./bookmarks-service')
 
 const app = express()
 
@@ -22,6 +23,16 @@ app.use(morgan(morganOption))
 app.use(helmet())
 
 app.use(cors())
+
+app.get('/bookmarks', (req, res, next) => {
+  const knexInstance = req.app.get('db')
+  BookmarksService.getAllBookmarks(knexInstance)
+       .then(bookmarks => {
+         res.json(bookmarks)
+       })
+      .catch(next)
+   })
+  
     
 
 module.exports = app
