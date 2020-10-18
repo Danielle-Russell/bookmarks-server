@@ -47,4 +47,24 @@ context('Given there are bookmarks in the database', () => {
              .expect(200, testBookmarks )
           })
   })
+  describe.only(`POST /bookmarks`, () => {
+      it(`create a bookmark, responding with 201 and the new bookmark`,  function() {
+          const newBookmark = {
+              title: 'New boomark',
+              url: 'www.test.com',
+              rating: 5,
+              description: 'New bookmark desc'
+          }
+       return supertest(app)
+        .post('/bookmarks')
+         .send(newBookmark)
+         .expect(res => {
+             expect(res.body.title).to.eql(newBookmark.title)
+             expect(res.body.url).to.eql(newBookmark.url)
+             expect(res.body.rating).to.eql(newBookmark.rating)
+             expect(res.body.description).to.eql(newBookmark.description)
+             expect(res.body).to.have.property('id')
+         })
+      })
+ })
 })
