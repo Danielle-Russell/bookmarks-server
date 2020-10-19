@@ -1,1 +1,1 @@
-TRUNCATE bookmarks_table;
+TRUNCATE bookmarks;

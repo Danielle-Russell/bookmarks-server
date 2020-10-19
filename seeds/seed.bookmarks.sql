@@ -1,4 +1,4 @@
-INSERT INTO bookmarks_table (title, url, rating, description)
+INSERT INTO bookmarks (title, url, rating, description)
 VALUES
   ('Thinkful', 'https://www.thinkful.com', '5', 'Think outside the classroom'),
   ('Google', 'https://www.google.com', '4', 'Where we find everything else'),
